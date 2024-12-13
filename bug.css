@@ -1,0 +1,21 @@
+The following CSS code snippet demonstrates an uncommon issue related to the specificity of CSS selectors and how the browser handles inheritance:
+
+```css
+.parent {
+  color: blue;
+}
+
+.child {
+  color: red;
+}
+
+.parent .child {
+  color: green; /* This style should override the others */
+}
+
+<div class="parent">
+  <span class="child"></span>
+</div>
+```
+
+The expectation is that the inner span (`.child`) will be green because the most specific selector (`.parent .child`) sets the `color` to green. However, sometimes, due to how browsers handle inheritance or unexpected selector interactions, the span might unexpectedly render in red or blue.
