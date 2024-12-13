@@ -1,0 +1,22 @@
+The issue can be solved by ensuring that there is no inheritance conflict or using the `!important` flag for the specific selector:
+
+```css
+.parent {
+  color: blue;
+}
+
+.child {
+  color: red;
+}
+
+.parent .child {
+  color: green !important; /* Force the override with !important */
+}
+
+/* Alternative solution: increase specificity */
+.parent > .child {
+  color: green;
+}
+```
+
+Using the `!important` flag (though generally discouraged due to potential maintenance issues) forces the browser to apply the style regardless of the specificity of other styles.  The alternative is to increase specificity by using a child combinator `>` which specifically targets immediate children and therefore is always higher precedence than class selectors alone.
